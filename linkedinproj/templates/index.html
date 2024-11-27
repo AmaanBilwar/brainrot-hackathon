@@ -4,12 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LinkedIn shitpost Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
-<body>
+<body class="flex justify-center p-12">
     <form action="/api" method="post">
-        <label >Content</label>
-        <input type="text" name="content" id="content">
-        <button type="submit">generate linkedin shitpost</button>
+        <label>Content</label>
+        <br>
+        <textarea class="p-4" name="content" id="content" rows="1" oninput="autoResize(this)"></textarea>
+        <br>
+        <button type="submit">💩 Generate LinkedIn Shitpost 💩</button>
     </form>
+<script>
+        function autoResize(textarea) {
+            textarea.style.height = 'auto';
+            textarea.style.height = textarea.scrollHeight + 'px';
+        }
+    </script>
+    
 </body>
 </html>

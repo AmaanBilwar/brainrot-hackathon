@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Response</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <p>{{ response|safe}}</p>
+    <div id="response">
+        <p id="response">{{ response|safe}}</p>
+    </div>
     <a href="/">generate another linkedin shitpost</a>
+
 </body>
 </html>
