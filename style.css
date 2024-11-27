@@ -1,0 +1,225 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: black; /* Dark background */
+    height: 100vh; /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Keep navbar at the top and section centered */
+}
+
+/* Navbar container */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* This will position buttons on left and right */
+    padding: 10px 20px;
+    background-color: #000000; /* Dark background color */
+}
+
+/* Title styling */
+.navbar-title {
+    font-size: 24px;
+    font-weight: 400;
+    text-align: center;
+    flex-grow: 1; /* This ensures the title stays centered */
+    text-transform: lowercase; /* Title in lowercase */
+    color: #fff;
+}
+
+/* Button common styling */
+.nav-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 1px solid #ffffff; /* White border */
+    background-color: #252525;
+    color: #ffffff; /* Text color */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Button hover effect */
+.nav-button:hover {
+    background-color: #333; /* Dark background on hover */
+    color: #fff; /* Text color change */
+}
+
+/* Button for the left and right positions */
+.left-button {
+    margin-right: auto; /* Push the button to the left */
+}
+
+.right-button {
+    margin-left: auto; /* Push the button to the right */
+}
+
+/* Main Section Styling */
+.main-section {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Vertically center the content */
+    height: calc(100vh - 60px); /* Full height minus navbar */
+    text-align: center; /* Center the text */
+}
+
+/* Container for text and buttons */
+.content-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+/* Text style for middle section */
+.main-text {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 90;
+    margin-bottom: 20px;
+}
+
+/* Button container styling */
+.button-container {
+    display: flex;
+    justify-content: center; /* Center the buttons horizontally */
+    gap: 20px; /* Space between buttons */
+}
+
+/* Styling for the buttons in the middle section */
+.action-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 100;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: 0.3px solid #ffffff; /* White border */
+    background-color: #252525;
+    color: #ffffff; /* Text color */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Button hover effect */
+.action-button:hover {
+    background-color: #333; /* Dark background on hover */
+    color: #fff; /* Text color change */
+}
+/* Footer section styling */
+footer {
+    background-color: rgba(0, 0, 0, 0.75); /* Semi-transparent black background */
+    padding-top: 40px;
+    padding-bottom: 40px;
+    width: 100%;
+}
+
+/* Container to center content */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Flexbox for layout: Text and Form */
+.flex {
+    display: flex;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.md\\:items-start {
+    align-items: flex-start;
+}
+
+/* Text styles */
+.text-lg {
+    font-size: 1.125rem; /* Larger text for the heading */
+}
+
+.font-bold {
+    font-weight: bold;
+}
+
+.text-sm {
+    font-size: 0.875rem; /* Smaller text for the description */
+}
+
+.text-white {
+    color: white;
+}
+
+.text-muted-foreground {
+    color: #b0b0b0; /* Light gray for muted text */
+}
+
+/* Input field styles */
+input {
+    height: 40px;
+    border-radius: 8px;
+    background-color: #252525;
+    padding: 0 14px;
+    margin-right: 15px;
+    color: #ffffff;
+    border: 1px solid #444;
+    font-size: 14px;
+}
+
+input::placeholder {
+    color: #b0b0b0; /* Placeholder text color */
+}
+
+/* Button styling */
+/* Button common styling */
+.nav-button,
+.action-button,
+button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    border-radius: 8px;
+    background-color: transparent; /* Set background to transparent */
+    color: #ffffff; /* Keep text color visible */
+    border: 1px solid #ffffff; /* White border */
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+/* Button hover effect */
+.nav-button:hover,
+.action-button:hover,
+button:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Slightly darken background on hover */
+    color: #ffffff; /* Keep text white */
+    border-color: #ffffff; /* Ensure the border remains white */
+}
+
+/* Disabled button style */
+.nav-button:disabled,
+.action-button:disabled,
+button:disabled {
+    background-color: transparent; /* Transparent for disabled */
+    border-color: #444; /* Darker border for disabled state */
+    color: #888; /* Lighter text color for disabled state */
+    cursor: not-allowed; /* Disable cursor */
+}
+
