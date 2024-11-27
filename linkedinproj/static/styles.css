@@ -16,6 +16,11 @@ body {
     padding: 2rem;
 }
 
+.linkedin-logo {
+    width: 100px; /* Adjust the width as needed */
+    margin-bottom: 1rem; /* Space below the logo */
+}
+
 #response {
     background-color: #ffffff; /* White background for the post */
     border: 1px solid #d3d3d3; /* Light grey border */
@@ -28,9 +33,9 @@ body {
     color: #333333; /* Dark grey text color */
 }
 
-#response p {
-    margin: 0.5rem 0; /* Space between paragraphs */
-}
+/* #response p {
+    margin: 0.5rem 0; /* Space between paragraphs } */
+ 
 
 a {
     font-family: 'Press Start 2P', cursive, sans-serif;
