@@ -8,6 +8,7 @@
 </head>
 <body>
     <div id="response">
+        <img src="{{ url_for('static', filename='linkedin-logo.png') }}" class='linkedin-logo'alt="linkedin logo">
         <p id="response">{{ response|safe}}</p>
     </div>
     <a href="/">generate another linkedin shitpost</a>
