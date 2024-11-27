@@ -1,8 +1,7 @@
 bin/
-include/
-
 lib/
-
 lib64/
+node_modules/
 pyvenv.cfg
 .env
+
