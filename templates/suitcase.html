@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heres the review</title>
+    <script src="{{ url_for('static', filename='js/server.js') }}"></script>
+</head>
+<body>
+    <div>
+        <p> {{ is_suitcase|safe }}</p>
+    </div>
+    <div>
+        <audio name="audio" id="audio" controls>
+            <source src="{{ url_for('static', filename='speech.mp3') }}" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+    <!-- <script>
+        window.addEventListener('load', function() {
+            var audio = document.getElementById('audio');
+            audio.play();
+        });
+    </script> -->
+</body>
+</html>
