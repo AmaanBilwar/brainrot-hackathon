@@ -11,6 +11,7 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
+    "tailwind": "npx tailwindcss -i ./static/input.css -o ./static/output.css --watch",
     "voice": "node getVoiceId.js",
     "dev": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,5 +19,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "tailwindcss": "^3.4.15"
+  }
 }
