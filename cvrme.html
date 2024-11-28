@@ -35,11 +35,34 @@
     <section class="main-section">
         <div class="content-center">
             <p class="main-text">Innovate. Streamline. Impact.</p>
-            <div class="button-container">
-                <button class="action-button">internships</button>
-                <button class="action-button">new grad</button>
-                <button class="action-button">hackathons</button>
+            
+            <!-- Cards Section (Replace buttons with clickable cards) -->
+            <div class="card-container">
+                <div class="card" onclick="location.href='#'">
+                    <img src="download.jpg" alt="Internships">
+                    <div class="card-content">
+                        <h3 class="card-title">Internships</h3>
+                        <p class="card-description">Explore exciting internship opportunities.</p>
+                    </div>
+                </div>
+
+                <div class="card" onclick="location.href='#'">
+                    <img src="download.jpg" alt="New Grad">
+                    <div class="card-content">
+                        <h3 class="card-title">New Grad</h3>
+                        <p class="card-description">Kickstart your career with new grad roles.</p>
+                    </div>
+                </div>
+
+                <div class="card" onclick="location.href='#'">
+                    <img src="download.jpg" alt="Hackathons">
+                    <div class="card-content">
+                        <h3 class="card-title">Hackathons</h3>
+                        <p class="card-description">Join fun and innovative hackathon challenges.</p>
+                    </div>
+                </div>
             </div>
+
         </div>
     </section>
 
@@ -50,7 +73,6 @@
     <div id="floatingVideoPopup" class="floating-popup">
         <div class="floating-popup-content">
             <button id="floatingClosePopup" class="close-button">X</button>
-            <!-- Set autoplay, muted initially -->
             <video id="floatingVideo" autoplay loop playsinline muted>
                 <source src="talktuah.mp4" type="video/mp4">
                 Your browser does not support the video tag.

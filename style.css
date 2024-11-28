@@ -255,3 +255,94 @@ button:disabled {
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+
+/* Container for the cards */
+.card-container {
+    display: flex;
+    justify-content: space-between; /* Space cards evenly */
+    gap: 20px; /* Space between cards */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    margin-top: 30px;
+}
+
+/* Individual Card Styling */
+.card {
+    background-color: #252525; /* Dark background for cards */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 30%; /* Set card width to 30%, so 3 cards can fit side by side */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    justify-content: space-between;
+    color: #fff; /* White text color */
+}
+
+/* Card Image Styling */
+/* Card Image Styling */
+.card img {
+    width: 100%; /* Ensure the image takes full width */
+    height: 200px; /* Set a fixed height for the image to make it consistent */
+    object-fit: cover; /* Ensure the image covers the area without stretching */
+    border-radius: 8px 8px 0 0; /* Round the top corners for a neat effect */
+}
+
+/* Optional: Adjust card height to maintain uniformity */
+.card {
+    background-color: #252525; /* Dark background for cards */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 30%; /* Set card width to 30% */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    justify-content: space-between;
+    color: #fff; /* White text color */
+}
+/* Card Content Styling */
+.card-content {
+    padding: 20px;
+    text-align: center; /* Center text inside cards */
+}
+
+.card-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #fff; /* White title text */
+    margin-bottom: 10px;
+}
+
+.card-description {
+    font-size: 1em;
+    color: #b0b0b0; /* Light gray text for description */
+    margin-top: 10px;
+}
+
+/* Card Hover Effect */
+.card:hover {
+    transform: translateY(-10px); /* Lift the card on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Increase shadow for hover effect */
+}
+
+/* Media Query for Small Screens */
+@media (max-width: 768px) {
+    .card-container {
+        flex-direction: column; /* Stack cards vertically */
+        align-items: center;
+    }
+
+    .card {
+        width: 80%; /* Make cards take 80% width on smaller screens */
+        margin-bottom: 20px; /* Add space between stacked cards */
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        width: 100%; /* Full width on very small screens */
+    }
+}
