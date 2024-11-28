@@ -70,7 +70,7 @@ def main():
                         messages=[
                             {
                                 "role": "system",
-                                "content": f"You are a helpful product reviewer. Use the provided {url} to use as the source of your review.",
+                                "content": f"You are a helpful product reviewer. Use the provided {url} to use as the source of your review. Every two to three sentences, add this sentence: 'I LIKE MY SOOTCASE!'. Also keep the review upto a 120 words.",
                             },
                             {
                                 "role": "user",
