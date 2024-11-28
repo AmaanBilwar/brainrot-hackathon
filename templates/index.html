@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/output.css">
     <title>Document</title>
 </head>
-<body>
-    <div>
-        <form action="/" method="post">
-            <label for="url">URL</label>
-            <input type="url" name="url">
-            <button type="submit">Get the Skibidi review!</button>
+<body class="bg-gray-100 text-black font-sans">
+    <div class="flex justify-center mt-10">
+        <form action="/" method="post" class="bg-white p-6 border-2 border-gray-300 shadow-lg">
+            <label for="url" class="block mb-2 text-lg font-bold">Paste URL here to something special!😉😉</label>
+            <input type="url" name="url" class="w-full p-2 mb-4 border-2 border-gray-300">
+            <button 
+            class="bg-blue-600 p-2 text-white rounded-lg hover:bg-blue-700"
+            type="submit">Get the Skibidi review🚽🪠!</button>
         </form>
     </div>
 </body>

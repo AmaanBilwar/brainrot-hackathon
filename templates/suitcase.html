@@ -3,24 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Heres the review</title>
+    <title>Here's the review</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='output.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='custom.css') }}">
     <script src="{{ url_for('static', filename='js/server.js') }}"></script>
 </head>
-<body>
-    <div>
-        <p> {{ is_suitcase|safe }}</p>
+<body class="bg-90s-bg text-black font-sans">
+    <div class="flex justify-center mt-10">
+        <div class="bg-white p-6 border-2 border-90s-border shadow-lg">
+            <p class="mb-4">{{ is_suitcase|safe }}</p>
+            <audio name="audio" id="audio" controls class="w-full">
+                <source src="{{ url_for('static', filename='speech.mp3') }}" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
     </div>
-    <div>
-        <audio name="audio" id="audio" controls>
-            <source src="{{ url_for('static', filename='speech.mp3') }}" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
-    </div>
-    <!-- <script>
-        window.addEventListener('load', function() {
-            var audio = document.getElementById('audio');
-            audio.play();
-        });
-    </script> -->
 </body>
 </html>
