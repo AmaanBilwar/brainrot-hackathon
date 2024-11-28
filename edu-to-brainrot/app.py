@@ -1,10 +1,12 @@
 from openai import OpenAI
 from flask import Flask, request, render_template
 from flask_cors import CORS
+from langchain_community.vectorstores import FAISS
 from dotenv import load_dotenv
 from langchain_community.document_loaders.csv_loader import CSVLoader
 from langchain_community.document_loaders import PyPDFLoader
 import os
+from langchain_openai import OpenAIEmbeddings
 
 load_dotenv()
 
@@ -28,13 +30,19 @@ def main():
     if file_extension is ".csv":
         file_path = os.path.join("uploads", file.filename)
         loader = CSVLoader(file_path=file_path)
-        data = loader.load()
-        print(data)
+        documents = loader.load()
+        
+        
+
+        
     if file_extension is ".pdf":
         file_path = os.path.join("uploads", file.filename)
         loader = PyPDFLoader(file_path=file_path)
         data = loader.load()
-        print(data)
+        client = OpenAI(api_key=OPENAI_API_KEY)
+        
+                
+        
     if file_extension not in [".csv", ".pdf"]:
         return render_template("error.html")
 
