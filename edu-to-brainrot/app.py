@@ -44,3 +44,6 @@ def main():
 @app.route("/generate_summary", methods=["GET", "POST"])
 def generate_summary():
     pass
+
+if __name__ == "__main__":
+    app.run(debug=True)
