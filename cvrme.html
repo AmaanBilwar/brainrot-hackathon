@@ -8,8 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css"> 
     <script src="animation.js" defer></script>
-
-    <!-- Link to your CSS file -->
 </head>
 <body>
 
@@ -33,7 +31,6 @@
         </nav>
     </header>
 
-
     <!-- Middle Section (Innovate. Streamline. Impact.) -->
     <section class="main-section">
         <div class="content-center">
@@ -53,7 +50,8 @@
     <div id="floatingVideoPopup" class="floating-popup">
         <div class="floating-popup-content">
             <button id="floatingClosePopup" class="close-button">X</button>
-            <video id="floatingVideo" controls autoplay loop>
+            <!-- Set autoplay, muted initially -->
+            <video id="floatingVideo" autoplay loop playsinline muted>
                 <source src="talktuah.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
@@ -101,6 +99,24 @@
         alert("This video cannot be closed!"); // Optional: Message for users
     });
 
-    // Set video playback speed to 0.5x
-    floatingVideo.playbackRate = 0.5;
+    // Wait for the video to be ready, then unmute and play
+    window.addEventListener('load', function () {
+        floatingVideo.muted = false;  // Unmute the video after page loads
+        floatingVideo.play();  // Ensure the video starts if autoplay doesn't work
+    });
+
+    // Prevent users from interacting with the video controls
+    floatingVideo.controls = false;  // Disable video controls
+
+    // Keep the video from being paused by the user
+    floatingVideo.onpause = function(event) {
+        event.preventDefault();  // Prevent video from being paused
+        floatingVideo.play();  // Keep it playing
+    };
+
+    // Set video playback speed to normal
+    floatingVideo.playbackRate = 0.25;
 </script>
+
+</body>
+</html>
