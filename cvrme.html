@@ -85,37 +85,48 @@
 </footer>
 
 <script>
-    // Get references to elements
-    const floatingPopup = document.getElementById('floatingVideoPopup');
-    const floatingCloseButton = document.getElementById('floatingClosePopup');
-    const floatingVideo = document.getElementById('floatingVideo');
+    // Wait for the DOM to fully load before interacting with the video
+    document.addEventListener('DOMContentLoaded', function() {
+        const floatingVideo = document.getElementById('floatingVideo');
+        const floatingPopup = document.getElementById('floatingVideoPopup');
+        const floatingCloseButton = document.getElementById('floatingClosePopup');
 
-    // Ensure the floating popup is always visible
-    floatingPopup.style.display = "block";
+        // Ensure the floating popup is visible
+        floatingPopup.style.display = "block";
 
-    // Prevent the "X" button from closing the floating popup
-    floatingCloseButton.addEventListener('click', function (event) {
-        event.preventDefault(); // Prevent default close behavior
-        alert("This video cannot be closed!"); // Optional: Message for users
+        // Prevent the "X" button from closing the floating popup
+        floatingCloseButton.addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent default close behavior
+            alert("This video cannot be closed!"); // Optional: Message for users
+        });
+
+        // Ensure the video is ready to play
+        floatingVideo.muted = true;  // Mute video for autoplay
+        floatingVideo.play();        // Start playing immediately
+
+        // Unmute the video after a short delay
+        setTimeout(function() {
+            floatingVideo.muted = false;  // Unmute after some time
+        }, 1000); // Delay of 1 second
+
+        // Set video playback speed to normal
+        floatingVideo.playbackRate = 0.25;  // Ensure normal playback speed
+
+        // Prevent users from interacting with the video controls
+        floatingVideo.controls = false;
+
+        // Ensure the video does not pause
+        floatingVideo.onpause = function(event) {
+            event.preventDefault();  // Prevent video from being paused
+            floatingVideo.play();    // Keep it playing
+        };
+
+        // In case autoplay is blocked by the browser, manually start the video
+        floatingVideo.addEventListener('canplay', function() {
+            floatingVideo.play();
+        });
+
     });
-
-    // Wait for the video to be ready, then unmute and play
-    window.addEventListener('load', function () {
-        floatingVideo.muted = false;  // Unmute the video after page loads
-        floatingVideo.play();  // Ensure the video starts if autoplay doesn't work
-    });
-
-    // Prevent users from interacting with the video controls
-    floatingVideo.controls = false;  // Disable video controls
-
-    // Keep the video from being paused by the user
-    floatingVideo.onpause = function(event) {
-        event.preventDefault();  // Prevent video from being paused
-        floatingVideo.play();  // Keep it playing
-    };
-
-    // Set video playback speed to normal
-    floatingVideo.playbackRate = 0.25;
 </script>
 
 </body>
