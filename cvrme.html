@@ -33,6 +33,7 @@
         </nav>
     </header>
 
+
     <!-- Middle Section (Innovate. Streamline. Impact.) -->
     <section class="main-section">
         <div class="content-center">
@@ -47,6 +48,16 @@
 
     <div id="animation-container">
         <img id="bouncing-image" src="./GiantST.webp" alt="Bouncing Image">
+    </div>
+
+    <div id="floatingVideoPopup" class="floating-popup">
+        <div class="floating-popup-content">
+            <button id="floatingClosePopup" class="close-button">X</button>
+            <video id="floatingVideo" controls autoplay loop>
+                <source src="talktuah.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
     </div>
 
 </body>
@@ -74,3 +85,22 @@
         </div>
     </div>
 </footer>
+
+<script>
+    // Get references to elements
+    const floatingPopup = document.getElementById('floatingVideoPopup');
+    const floatingCloseButton = document.getElementById('floatingClosePopup');
+    const floatingVideo = document.getElementById('floatingVideo');
+
+    // Ensure the floating popup is always visible
+    floatingPopup.style.display = "block";
+
+    // Prevent the "X" button from closing the floating popup
+    floatingCloseButton.addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent default close behavior
+        alert("This video cannot be closed!"); // Optional: Message for users
+    });
+
+    // Set video playback speed to 0.5x
+    floatingVideo.playbackRate = 0.5;
+</script>
