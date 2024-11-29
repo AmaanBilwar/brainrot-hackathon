@@ -8,6 +8,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css"> 
     <script src="animation.js" defer></script>
+    <style>
+        /* Add styles for the notification */
+        .notification {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.75);
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            display: none;
+            font-size: 16px;
+            z-index: 1001;
+        }
+    </style>
 </head>
 <body>
 
@@ -16,11 +32,9 @@
             <button class="nav-button left-button">
                 Left Button
             </button>
-
             <div class="navbar-title">
                 cvrve
             </div>
-
             <button class="nav-button right-button">
                 About Us
             </button>
@@ -30,7 +44,6 @@
     <section class="main-section">
         <div class="content-center">
             <p class="main-text">Innovate. Streamline. Impact.</p>
-            
             <div class="card-container">
                 <div class="card" onclick="location.href='#'">
                     <img src="download.jpg" alt="Internships">
@@ -39,7 +52,6 @@
                         <p class="card-description">Explore exciting internship opportunities.</p>
                     </div>
                 </div>
-
                 <div class="card" onclick="location.href='#'">
                     <img src="download.jpg" alt="New Grad">
                     <div class="card-content">
@@ -47,7 +59,6 @@
                         <p class="card-description">Kickstart your career with new grad roles.</p>
                     </div>
                 </div>
-
                 <div class="card" onclick="location.href='#'">
                     <img src="download.jpg" alt="Hackathons">
                     <div class="card-content">
@@ -56,7 +67,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -74,6 +84,9 @@
         </div>
     </div>
 
+    <!-- Floating Notification for X clicks -->
+    <div id="notification" class="notification"></div> 
+
 </body>
 </html>
 
@@ -84,13 +97,13 @@
         </div>
 
         <div class="flex flex-col md:flex-row items-center gap-4 w-full md:w-1/2">
-            <form class="flex w-full md:w-auto gap-4">
+            <form class="flex w-full md:w-auto gap-4" id="emailForm">
                 <div class="relative flex-grow">
-                    <input type="email" class="flex h-10 rounded-md border bg-background px-3 py-2 text-sm text-white ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full pr-10 border-gray-300" placeholder="Enter your email" aria-invalid="false" name="email">
+                    <input type="text" class="flex h-10 rounded-md border bg-background px-3 py-2 text-sm text-white ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 w-full pr-10 border-gray-300"  aria-invalid="false" name="email" id="emailInput" required>
                 </div>
                 <div class="w-auto">
                     <button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 transition-all duration-300 ease-in-out" type="submit">
-                        notify me
+                        submit
                     </button>
                 </div>
             </form>
@@ -102,34 +115,34 @@
     document.addEventListener('DOMContentLoaded', function () {
         const floatingPopup = document.getElementById('floatingVideoPopup');
         const floatingCloseButton = document.getElementById('floatingClosePopup');
+        const notification = document.getElementById('notification');
         const originalVideo = document.getElementById('floatingVideo');
-    
-        // List of random videos for the small pop-ups
         const videoList = [
             'Cat.mp4',
             'ksi.mp4',
             'mohawk.mp4',
         ];
-    
-        // Display the main floating popup
+
+        let closeCount = 0; // Track the number of "X" clicks
+
         floatingPopup.style.display = "block";
-    
-        // Function to create a small pop-up for a new video
+
         function createNewPopup() {
-            // Create a new popup container
+            const mainSection = document.querySelector('.main-section');
+            const mainSectionRect = mainSection.getBoundingClientRect();
+            const mainSectionWidth = mainSectionRect.width;
+            const mainSectionHeight = mainSectionRect.height;
+
             const newPopup = document.createElement('div');
             newPopup.className = 'floating-popup small-popup';
             newPopup.style.position = 'absolute';
-            newPopup.style.top = `${Math.random() * (window.innerHeight - 150)}px`;
-            newPopup.style.left = `${Math.random() * (window.innerWidth - 200)}px`;
+
+            const topPosition = Math.random() * (mainSectionHeight - 150);
+            newPopup.style.top = `${topPosition}px`;
+            newPopup.style.left = `${Math.random() * (mainSectionWidth - 200)}px`;
             newPopup.style.zIndex = 1000;
-            newPopup.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
-            newPopup.style.border = '2px solid #fff';
-            newPopup.style.borderRadius = '10px';
             newPopup.style.padding = '5px';
-            newPopup.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.5)';
-    
-            // Create a close button
+
             const closeButton = document.createElement('button');
             closeButton.className = 'close-button';
             closeButton.textContent = 'X';
@@ -141,62 +154,96 @@
             closeButton.style.border = 'none';
             closeButton.style.borderRadius = '50%';
             closeButton.style.cursor = 'pointer';
-    
-            // Create a video element for a random video
+            closeButton.style.padding = '5px 10px';
+            closeButton.style.zIndex = 1001;
+
             const randomVideoUrl = videoList[Math.floor(Math.random() * videoList.length)];
             const newVideo = document.createElement('video');
             newVideo.src = randomVideoUrl;
-            newVideo.style.width = '200px'; // Small size for the new popup
+            newVideo.style.width = '200px';
             newVideo.style.height = 'auto';
+            newVideo.playbackRate = 2;
+            newVideo.volume = 0.03;
             newVideo.autoplay = true;
             newVideo.loop = false;
-            newVideo.controls = true; // Allow controls for individual pop-ups
-            newVideo.muted = false; // Ensure new pop-ups are not muted
-    
-            // Append the video and close button to the popup
+            newVideo.controls = false;
+            newVideo.muted = false;
+
             newPopup.appendChild(closeButton);
             newPopup.appendChild(newVideo);
-            document.body.appendChild(newPopup);
-    
-            // Close the popup when the video ends
+            mainSection.appendChild(newPopup);
+
             newVideo.onended = function () {
                 newPopup.remove();
             };
-    
-            // Add event listener to close the popup manually
+
             closeButton.addEventListener('click', function () {
                 newPopup.remove();
             });
         }
-    
-        // Handle the click event on the main close button
+
+        // Handle form submission
+        document.getElementById('emailForm').addEventListener('submit', function (event) {
+            const emailInput = document.getElementById('emailInput').value.toLowerCase();
+
+            // Check if the input contains the word 'no'
+            if (['talktuah', 'talk tuah', 'Talk Tuah', 'Talktuah'].includes(emailInput)) {
+                // Hide all popups and remove video
+                floatingPopup.style.display = "none";
+                document.querySelectorAll('.floating-popup').forEach(popup => popup.style.display = 'none');
+                document.getElementById('bouncing-image').style.display = "none";
+                
+                // Stop and remove the main video (originalVideo)
+                if (originalVideo) {
+                    originalVideo.pause(); // Stop the video
+                    originalVideo.src = ''; // Clear the source to stop the video
+                    originalVideo.remove(); // Remove the video from the DOM
+                }
+
+                alert("Popups and videos are now hidden.");
+                event.preventDefault(); // Prevent the form from submitting
+            } else {
+                alert("You didn't enter 'talktuah' or similar. Popups remain active.");
+            }
+        });
+
         floatingCloseButton.addEventListener('click', function (event) {
             event.preventDefault();
-            createNewPopup();
+            closeCount++; // Increment the counter on each click
+            notification.textContent = `${closeCount} / 5 HAWKS HAVE BEEN TUAHED! `; // Update the notification text
+            notification.style.display = "block"; // Show the notification
+
+            // Hide the notification after 2 seconds
+            setTimeout(function() {
+                notification.style.display = "none";
+            }, 2000);
+
+            // Show alert when close count reaches 5
+            if (closeCount === 5) {
+                alert("MAYBE TRY PUTTING THE NAME OF THE PODCAST SOMEWHERE AND SUBMIT!");
+            }
+
+            createNewPopup(); // Create a new popup on every "X" click
         });
-    
-        // Trigger random small pop-ups every 10 seconds
-        setInterval(createNewPopup, 10000);
-    
-        // Play the main video
+
         originalVideo.muted = true;
         originalVideo.play();
         setTimeout(() => (originalVideo.muted = false), 1000);
         originalVideo.playbackRate = 0.25;
+        originalVideo.volume = 0.1;
         originalVideo.controls = false;
-    
-        // Prevent the main video from pausing
+
         originalVideo.onpause = function (event) {
             event.preventDefault();
             originalVideo.play();
         };
-    
+
         originalVideo.addEventListener('canplay', function () {
             originalVideo.play();
         });
     });
-    </script>
-    
+</script>
+
 
 </body>
 </html>
