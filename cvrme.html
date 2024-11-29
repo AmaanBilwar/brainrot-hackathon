@@ -6,8 +6,8 @@
     <meta name="description" content="CVRVE - Your Personal Portfolio">
     <title>cvrve</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css"> 
-    <script src="animation.js" defer></script>
+    <link rel="stylesheet" href="assets\styles\style.css"> 
+    <script src="assets\scripts\animation.js" defer></script>
     <style>
         /* Add styles for the notification */
         .notification {
@@ -28,7 +28,7 @@
 <body>
     <div class="video-background">
         <video autoplay muted loop id="background-video">
-            <source src="bg.mp4" type="video/mp4">
+            <source src="assets\videos\bg.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
     </div>
@@ -56,21 +56,21 @@
             <br>
             <div class="card-container">
                 <div class="card" onclick="window.open('https://brainrotlinkedinpostgenerator.vercel.app/', '_blank')">
-                    <img src="download.jpg" alt="Internships">
+                    <img src="assets\images\download.jpg" alt="Internships">
                     <div class="card-content">
                         <h2 class="card-title">linkedinpost generator</h2>
                         <p class="card-description">description.</p>
                     </div>
                 </div>
                 <div class="card" onclick="window.open('https://ilikemysootcase.onrender.com/', '_blank')">
-                    <img src="download.jpg" alt="New Grad">
+                    <img src="assets\images\download.jpg" alt="New Grad">
                     <div class="card-content">
-                        <h2 class="card-title">ilikemysuitcase</h2>
+                        <h2 class="card-title">ilikemysuitcase </h2>
                         <p class="card-description">i do.</p>
                     </div>
                 </div>
                 <div class="card" onclick="window.open('')">
-                    <img src="download.jpg" alt="Hackathons">
+                    <img src="assets\images\download.jpg" alt="Hackathons">
                     <div class="card-content">
                         <h2 class="card-title">justachillgame</h2>
                         <p class="card-description">game.</p>
@@ -78,7 +78,7 @@
                 </div>
                 <!-- New Card 1 -->
                 <div class="card" onclick="window.open('https://examplelink1.com', '_blank')">
-                    <img src="download.jpg" alt="Card 4">
+                    <img src="assets\images\download.jpg" alt="Card 4">
                     <div class="card-content">
                         <h2 class="card-title">cvrve</h2>
                         <p class="card-description">description.</p>
@@ -86,7 +86,7 @@
                 </div>
                 <!-- New Card 2 -->
                 <div class="card" onclick="window.open('https://examplelink2.com', '_blank')">
-                    <img src="download.jpg" alt="Card 5">
+                    <img src="assets\images\download.jpg" alt="Card 5">
                     <div class="card-content">
                         <h2 class="card-title">extension</h2>
                         <p class="card-description">description.</p>
@@ -106,7 +106,7 @@
         <div class="floating-popup-content">
             <button id="floatingClosePopup" class="close-button">X</button>
             <video id="floatingVideo" autoplay loop playsinline muted>
-                <source src="talktuah.mp4" type="video/mp4">
+                <source src="assets\videos\talktuah.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
         </div>
@@ -146,9 +146,9 @@
         const notification = document.getElementById('notification');
         const originalVideo = document.getElementById('floatingVideo');
         const videoList = [
-            'Cat.mp4',
-            'ksi.mp4',
-            'mohawk.mp4',
+            'assets\videos\Cat.mp4',
+            'assets\videos\ksi.mp4',
+            'assets\videos\mohawk.mp4',
         ];
 
         let closeCount = 0; // Track the number of "X" clicks
@@ -231,7 +231,7 @@
                 alert("Popups and videos are now hidden.");
                 event.preventDefault(); // Prevent the form from submitting
             } else {
-                alert("You didn't enter 'talktuah' or similar. Popups remain active.");
+
             }
         });
 
