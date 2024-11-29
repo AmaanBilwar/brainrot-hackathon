@@ -29,6 +29,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 def is_retail(url):
     retail_domains = [
+        "amazon.in",
         "amazon.com", "ebay.com", "walmart.com", "target.com", "bestbuy.com"
     ]
     result = any(domain in url for domain in retail_domains)
