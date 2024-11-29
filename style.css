@@ -40,6 +40,7 @@ body {
 .navbar-title {
     font-size: 24px;
     font-weight: 400;
+    margin-left: 15px;
     text-align: center;
     flex-grow: 1; /* This ensures the title stays centered */
     text-transform: lowercase; /* Title in lowercase */
@@ -92,7 +93,7 @@ body {
 
 .main-text {
     color: #fff;
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 90;
     margin-bottom: 20px;
 }
@@ -237,18 +238,18 @@ button:disabled {
 
 .card-container {
     display: flex;
-    justify-content: space-between; /* Space cards evenly */
+    justify-content: space-evenly; /* Space cards evenly across the row */
     gap: 20px; /* Space between cards */
-    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    flex-wrap: nowrap; /* Prevent cards from wrapping to the next line */
     margin-top: 30px;
 }
 
 .card {
     background-color: #252525; /* Dark background for cards */
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    width: 30%; /* Set card width to 30%, so 3 cards can fit side by side */
+    width: 18%; /* Adjust the width to fit more cards in a single row */
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
     cursor: pointer;
     display: flex;
@@ -259,32 +260,19 @@ button:disabled {
 
 .card img {
     width: 100%; /* Ensure the image takes full width */
-    height: 200px; /* Set a fixed height for the image to make it consistent */
+    height: 180px; /* Set a fixed height for the image to make it consistent */
     object-fit: cover; /* Ensure the image covers the area without stretching */
     border-radius: 8px 8px 0 0; /* Round the top corners for a neat effect */
 }
 
-.card {
-    background-color: #252525; /* Dark background for cards */
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    width: 30%; /* Set card width to 30% */
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column; /* Stack content vertically */
-    justify-content: space-between;
-    color: #fff; /* White text color */
-}
 .card-content {
-    padding: 20px;
+    padding: 15px;
     text-align: center; /* Center text inside cards */
 }
 
 .card-title {
     font-size: 1.4em;
-    font-weight: bold;
+    font-weight:normal;
     color: #fff;
     margin-bottom: 10px;
 }
@@ -294,7 +282,6 @@ button:disabled {
     color: #b0b0b0; 
     margin-top: 10px;
 }
-
 
 .card:hover {
     transform: translateY(-10px); 
@@ -319,6 +306,7 @@ button:disabled {
     }
 }
 
+
 .jumpscare-popup {
     animation: pop-up-animation 0.5s ease-in-out;
 }
@@ -333,3 +321,42 @@ button:disabled {
         opacity: 1;
     }
 }
+
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent scrolling due to the video */
+}
+
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Ensure it stays behind the content */
+    overflow: hidden;
+}
+
+#background-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures video scales and fills the screen */
+}
+
+/* Add an optional dark overlay for better text visibility */
+.video-background::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Darken with transparency */
+    z-index: 1; /* Overlay is above video but behind content */
+}
+
