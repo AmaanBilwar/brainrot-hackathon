@@ -75,7 +75,9 @@ async function sendEmail(toEmail, jobPost) {
 
     try {
         const token = await chrome.identity.getAuthToken({ interactive: true });
-        
+        if (!token) {
+            throw new Error('Failed to get auth token');
+        }
         const response = await fetch('https://www.googleapis.com/gmail/v1/users/me/messages/send', {
             method: 'POST',
             headers: {
@@ -98,6 +100,7 @@ async function sendEmail(toEmail, jobPost) {
         });
 
     } catch (error) {
+        console.error('Authentication failed:', error);
         console.error('Failed to send email:', error);
     }
 }
