@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "LinkedIn People Pisser Offer",
+  "version": "1.0",
+  "permissions": [
+    "tabs",
+    "storage",
+    "identity"
+  ],
+  "host_permissions": [
+    "https://*.linkedin.com/*",
+    "https://www.googleapis.com/*"
+  ],
+  "oauth2": {
+    "client_id": "87768190212-04bn04l6qeltveqnvt99gq4lurln7oqc.apps.googleusercontent.com",
+    "scopes": ["https://www.googleapis.com/auth/gmail.send"]
+  },
+  "action":{
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [{
+    "matches": ["https://*.linkedin.com/*"],
+    "js": ["content.js"]
+  }],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [{
+    "resources": ["config.js"],
+    "matches": ["<all_urls>"]
+  }]
+}
