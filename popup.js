@@ -1,28 +1,20 @@
-// Wait for DOM to load
-document.addEventListener('DOMContentLoaded', function() {
-    // Get button element
-    const button = document.getElementById('myButton');
-    const resultDiv = document.getElementById('result');
-
-    // Add click event listener
-    button.addEventListener('click', function() {
-        // Example function
-        resultDiv.textContent = 'Button clicked!';
-        
-        // Example: Get current tab
-        chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-            let currentTab = tabs[0];
-            // Do something with the current tab
-            console.log(currentTab.url);
+// popup.js
+document.addEventListener('DOMContentLoaded', async () => {
+    const storage = await chrome.storage.local.get(null);
+    const activityLog = document.getElementById('activityLog');
+    
+    // Display stored activities
+    Object.entries(storage)
+        .filter(([key]) => key.startsWith('email_sent_'))
+        .sort((a, b) => b[1].timestamp.localeCompare(a[1].timestamp))
+        .forEach(([key, data]) => {
+            const entry = document.createElement('div');
+            entry.className = 'log-entry';
+            entry.innerHTML = `
+                <p>Email sent to: ${data.to}</p>
+                <p>Job Title: ${data.jobPost.title}</p>
+                <p>Time: ${new Date(data.timestamp).toLocaleString()}</p>
+            `;
+            activityLog.appendChild(entry);
         });
-    });
-
-    // Example: Message passing to content script
-    /*
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-        chrome.tabs.sendMessage(tabs[0].id, {action: "getData"}, function(response) {
-            console.log(response);
-        });
-    });
-    */
 });
