@@ -20,13 +20,24 @@
             background-color: #ffebee;
             color: #c62828;
         }
+        .activity-log{
+            margin-top: 10px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .log-entry{
+            padding: 5px;
+            border-bottom: 1px solid #eee;
+        }
     </style>
 </head>
 <body>
     <h2>LinkedIn Job Offer Extension</h2>
-    <div id="status" class="status">
-        Monitoring LinkedIn activity...
+    <div id="status">Status: Active</div>
+    <div class="activity-log" id="activityLog">
+        <h3>Recent Activity:</h3>
+        <!-- Activity will be displayed here -->
     </div>
-    <p>The extension is running and will monitor your LinkedIn likes.</p>
+    <script src="popup.js"></script>
 </body>
 </html>
