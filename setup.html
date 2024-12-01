@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Setup LinkedIn Job Offer Extension</title>
+    <style>
+        body {
+            width: 300px;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #0077b5;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #006097;
+        }
+    </style>
+</head>
+<body>
+    <h2>Initial Setup</h2>
+    <div class="form-group">
+        <label for="userEmail">Your Email:</label>
+        <input type="email" id="userEmail" placeholder="Enter your email">
+    </div>
+    <div class="form-group">
+        <label for="apiKey">SendGrid API Key:</label>
+        <input type="password" id="apiKey" placeholder="Enter SendGrid API Key">
+    </div>
+    <button id="saveButton">Save Settings</button>
+    <script src="setup.js"></script>
+</body>
+</html>
