@@ -4,35 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/output.css">
-    <title>Document</title>
+    <title>Suitcase Review</title>
+    <style>
+        .card {
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+    </style>
 </head>
 <body class="bg-gray-100 text-black font-sans">
-    <div class="flex justify-center m-8 p-6">
-        <h1 class="font-bold text-2xl shadow-lg border-spacing-2 rounded-md p-12 text-center hover:cursor-pointer hover:bg-slate-400">
-            WELCOME TO YOU'RE PERSONAL SHOPPING REVIEWER
+    <div class="flex justify-center">
+        <h1 class="font-bold text-4xl border-spacing-2 rounded-md p-12 text-center text-black">
+            I LIKE MY SOOTCASE 
         </h1>
-        
     </div>
-    <div class="flex justify-center text-black font-semibold font-mono rounded-md ">
-        <p>
-            This website helps your skibidi ahh 💀 to have the suitcase link be reviewed by none other than <span class="font-extrabold">BARRON TRUMP (I like my sootcase)</span>!. Paste the link and see the magic🚽🪠
-        </p>
-    </div>
+    <div class="flex justify-center pb-4">
+        <h2 class="text-xl pb-4">by Amaan</h2>
+    </div>    
     <div class="flex justify-center mt-10">
-        
-        <form action="/" method="post" class="bg-white p-6 border-2 border-gray-300 shadow-lg">
-            <label for="url" class="block mb-2 text-lg font-bold">Paste sootcase💼 URL here to something special!😉😉</label>
-            <input type="url" name="url" class="w-full p-2 mb-4 border-2 border-gray-300">
-            <button 
-            class="flex justify-center text-center bg-blue-600 p-2 text-white rounded-lg hover:bg-blue-700"
-            type="submit">Get the Skibidi review🚽🪠!</button>
-        </form>
+        <div class="card p-6 shadow-lg rounded-md">
+            <video autoplay loop class="w-full mb-4">
+                <source src="../static/sootcase-video.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <form action="/" method="post">
+                <label for="url" class="  block mb-2 text-lg font-bold">Paste suitcase💼 URL here to see something special!😉😉</label>
+                <input type="url" name="url" class="w-full p-2 mb-4 border-2 border-gray-300 rounded-lg" required>
+                <button 
+                    class="flex justify-center text-center bg-blue-600 p-2 text-white rounded-lg hover:bg-blue-700"
+                    type="submit">Get the Skibidi review🚽🪠!
+                </button>
+            </form>
+        </div>
     </div>
-    <div>
-        dont try to be smart and paste some bullshit on there! or worse leave it empty
-    </div>
+    <footer class="flex justify-center p-12 mt-6">
+        by Amaan
+    </footer>
 </body>
-<footer class="flex justify-center p-12 mt-6">
-    by Amaan
-</footer>
 </html>
