@@ -66,25 +66,30 @@ async function sendEmail(toEmail, jobPost) {
     }
 
     const emailContent = generateEmailHTML(jobPost);
-    const email = btoa(
-        `To: ${toEmail}\r\n` +
-        `Subject: Job Opportunity: ${jobPost.title}\r\n` +
-        `Content-Type: text/html\r\n\r\n` +
-        emailContent
-    ).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
-
+    
     try {
-        const token = await chrome.identity.getAuthToken({ interactive: true });
-        if (!token) {
-            throw new Error('Failed to get auth token');
+        const apiKey = await chrome.storage.local.get('sendgridApiKey');
+        if (!apiKey.sendgridApiKey) {
+            throw new Error('SendGrid API key not found');
         }
-        const response = await fetch('https://www.googleapis.com/gmail/v1/users/me/messages/send', {
+
+        const response = await fetch('https://api.sendgrid.com/v3/mail/send', {
             method: 'POST',
             headers: {
-                'Authorization': `Bearer ${token}`,
+                'Authorization': `Bearer ${apiKey.sendgridApiKey}`,
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ raw: email })
+            body: JSON.stringify({
+                personalizations: [{
+                    to: [{ email: toEmail }]
+                }],
+                from: { email: 'your-verified-sender@yourdomain.com' },
+                subject: `Job Opportunity: ${jobPost.title}`,
+                content: [{
+                    type: 'text/html',
+                    value: emailContent
+                }]
+            })
         });
 
         if (!response.ok) {
@@ -100,10 +105,10 @@ async function sendEmail(toEmail, jobPost) {
         });
 
     } catch (error) {
-        console.error('Authentication failed:', error);
         console.error('Failed to send email:', error);
     }
 }
+
 
 function generateEmailHTML(jobPost) {
     return `
